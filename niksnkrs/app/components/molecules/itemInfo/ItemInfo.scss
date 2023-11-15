@@ -1,0 +1,31 @@
+.item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  width: 43rem;
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    &-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &__select {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        select {
+          margin-left: 1rem;
+        }
+      }
+    }
+
+    img {
+      width: 12rem;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+#userCheck {
+  display: none;
+}
+
+.userCheck {
+  background-color: black;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.userCheck-popup {
+  opacity: 0;
+  display: none;
+  flex-direction: column;
+  left: 78%;
+  top: 7%;
+  position: fixed;
+
+  button {
+    margin: 0 !important;
+    width: 9rem;
+    height: 3rem;
+    padding: 0;
+  }
+  button:nth-child(1) {
+    border-bottom: 0;
+  }
+}
+#userCheck:checked ~ .userCheck-popup {
+  opacity: 1;
+  display: flex;
+}
