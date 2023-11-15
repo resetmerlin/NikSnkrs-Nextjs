@@ -1,27 +1,51 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html,
+body {
+  height: 100%;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  min-height: 100dvh;
+  height: 100dvh;
+  width: 100vw;
+  font-family: 'Oswald', sans-serif;
+}
+
+#root {
+  height: inherit;
+  width: inherit;
+}
+
+#container {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#header {
+  height: 10%;
+}
+html {
+  font-size: 62.5%;
+}
+a {
+  text-decoration: none;
+}
+
+.h-full {
+  height: 100% !important;
 }
