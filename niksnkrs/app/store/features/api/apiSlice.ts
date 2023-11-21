@@ -8,7 +8,7 @@ import {
   IProductId,
   IProducts,
   IUser,
-} from '@/app/lib/types';
+} from '@/lib/types';
 import { orderAdded } from '../order';
 import { userInfoAdded } from '../user';
 

@@ -1,4 +1,4 @@
-import { ICart } from '@/app/lib/types';
+import { ICart } from '@/lib/types';
 import { createSlice } from '@reduxjs/toolkit';
 
 export const cartSlice = createSlice({

@@ -7,7 +7,7 @@ import {
   HeaderLayout,
   Intro,
   ParentTemplate,
-} from './components';
+} from '../components';
 
 export default function Home() {
   const isLoading = null;
