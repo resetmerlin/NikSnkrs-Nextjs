@@ -1,0 +1,13 @@
+.cardAddress {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  div {
+    margin: 0.5rem 0;
+  }
+  button {
+    margin-top: 2rem !important;
+    width: 19rem;
+  }
+}
