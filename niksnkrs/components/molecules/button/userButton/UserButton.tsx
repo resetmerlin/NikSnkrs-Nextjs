@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import './UserButton.scss';
 import { AtomicButton, SvgUserCircle } from '@/components';
 
@@ -21,7 +21,7 @@ export default function UserButton({ logOut }: IProps) {
         <SvgUserCircle size='3rem' color='white' />
       </label>
       <div className='userCheck-popup'>
-        <Link to='/profile'>
+        <Link href='/profile'>
           <AtomicButton shape='rect' size='xs' color='secondary'>
             Profile
           </AtomicButton>
