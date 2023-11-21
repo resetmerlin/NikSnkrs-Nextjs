@@ -1,4 +1,4 @@
-import { AtomicSubtitle, AtomicTitle } from '@/app/components/atoms';
+import { AtomicSubtitle, AtomicTitle } from '@/components';
 import './IntroRight.scss';
 
 /**

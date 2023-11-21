@@ -5,7 +5,7 @@ import {
   AtomicItemImage,
   AtomicSubtitle,
   SvgX,
-} from '@/app/components/atoms';
+} from '@/components';
 
 type IProps = {
   cartProduct: ICart;

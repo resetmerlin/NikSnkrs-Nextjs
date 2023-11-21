@@ -1,4 +1,4 @@
-import { AtomicButton, SvgDownArrow } from '@/app/components/atoms';
+import { AtomicButton, SvgDownArrow } from '@/components';
 
 type IProps = {
   goNextProductPage: () => void;

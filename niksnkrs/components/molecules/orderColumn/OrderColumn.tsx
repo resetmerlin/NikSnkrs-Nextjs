@@ -1,4 +1,4 @@
-import { AtomicTitle } from '@/app/components/atoms';
+import { AtomicTitle } from '@/components';
 import './OrderColumn.scss';
 
 type IProps = {

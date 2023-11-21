@@ -1,4 +1,4 @@
-import { AtomicButton, SvgLogIn } from '@/app/components/atoms';
+import { AtomicButton, SvgLogIn } from '@/components';
 
 /**
  * Responsible for rendering a login button

@@ -1,4 +1,4 @@
-import { AtomicSubtitle, AtomicTitle, SvgStar } from '@/app/components/atoms';
+import { AtomicSubtitle, AtomicTitle, SvgStar } from '@/components';
 import './ItemInfo.scss';
 import { IProduct } from '@/lib/types';
 import Image from 'next/image';

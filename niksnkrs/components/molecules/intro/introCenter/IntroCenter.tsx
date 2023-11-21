@@ -1,4 +1,4 @@
-import { AtomicItemImage } from '@/app/components/atoms';
+import { AtomicItemImage } from '@/components';
 import './IntroCenter.scss';
 
 /**

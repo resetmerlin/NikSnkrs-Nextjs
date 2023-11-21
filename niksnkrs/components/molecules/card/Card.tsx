@@ -5,7 +5,7 @@ import {
   AtomicItemImage,
   AtomicSubtitle,
   SvgStar,
-} from '@/app/components/atoms';
+} from '@/components';
 
 type IProps = {
   product: IProduct;

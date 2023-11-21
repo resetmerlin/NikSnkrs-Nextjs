@@ -1,4 +1,4 @@
-import { AtomicButton, SvgCartAlt } from '@/app/components/atoms';
+import { AtomicButton, SvgCartAlt } from '@/components';
 
 /**
  * Responsible for rendering a cart button

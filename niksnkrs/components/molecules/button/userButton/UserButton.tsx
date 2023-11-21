@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './UserButton.scss';
-import { AtomicButton, SvgUserCircle } from '@/app/components/atoms';
+import { AtomicButton, SvgUserCircle } from '@/components';
 
 type IProps = {
   logOut: () => void;

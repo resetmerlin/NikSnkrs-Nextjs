@@ -3,7 +3,7 @@ import {
   AtomicItemImage,
   AtomicSubtitle,
   SvgStar,
-} from '@/app/components/atoms';
+} from '@/components';
 import './Item.scss';
 import { IProduct } from '@/lib/types';
 
