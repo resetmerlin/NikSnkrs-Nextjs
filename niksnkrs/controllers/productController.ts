@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import productModel from '../(models)/productModel';
+import productModel from '../models/productModel';
 import { NextResponse } from 'next/server';
 
 // @desc Fetch all products
