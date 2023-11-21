@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Oswald } from 'next/font/google';
 import './globals.css';
+import Providers from './store/provider';
 
 const inter = Oswald({ weight: '400', subsets: ['cyrillic'] });
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
