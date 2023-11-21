@@ -24,12 +24,18 @@ export default function AtomicItemImage({
   ...props
 }: IProps) {
   return (
-    <img
+    <Image
+      width={
+        size === 'xl' ? 960 : size === 'l' ? 368 : size === 'm' ? 176 : 176
+      }
+      height={
+        size === 'xl' ? 960 : size === 'l' ? 320 : size === 'm' ? 176 : 176
+      }
       {...props}
       src={
         path == 'short'
-          ? `./products/${productId}.png`
-          : `../products/${productId}.png`
+          ? `/products/${productId}.png`
+          : `./products/${productId}.png`
       }
       alt='productId'
       id='nike-product'
