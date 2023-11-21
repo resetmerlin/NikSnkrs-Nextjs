@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
 import './CartAddress.scss';
 import { IAddress } from '@/lib/types';
 import { AtomicButton, AtomicSubtitle, AtomicTitle } from '@/components';
+import Link from 'next/link';
 
 type IProps = {
   address: IAddress;
@@ -21,7 +21,7 @@ export default function CartAddress({ address }: IProps) {
       <div>
         <AtomicSubtitle size='m'>Address: {address?.address}</AtomicSubtitle>
       </div>
-      <Link to='/profile'>
+      <Link href='/profile'>
         <AtomicButton size='m'>Change Address</AtomicButton>
       </Link>
     </div>
