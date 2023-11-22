@@ -1,0 +1,18 @@
+.itemNav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  height: 100%;
+  flex-direction: column;
+  width: auto;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  &__column {
+    height: 100%;
+    width: auto;
+    overflow-y: scroll;
+  }
+}
