@@ -1,5 +1,4 @@
-'use client';
-
+import { getProducts } from '@/lib/actions/products.actions';
 import {
   CardLists,
   CardListsSkeleton,
@@ -9,11 +8,14 @@ import {
   ParentTemplate,
 } from '../components';
 
-export default function Home() {
+async function Home() {
   const isLoading = null;
   const userInfo = null;
+  const products = await getProducts();
+
   const logOutHandler = () => console.log('touched');
-  const threeProducts = [1, 2, 3];
+  const threeProducts = products && [...products]?.slice(0, 3);
+
   return (
     <HeaderLayout userInfo={userInfo} logOut={logOutHandler}>
       <ParentTemplate size='s'>
@@ -31,3 +33,5 @@ export default function Home() {
     </HeaderLayout>
   );
 }
+
+export default Home;
