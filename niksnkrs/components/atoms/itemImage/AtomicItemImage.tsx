@@ -35,7 +35,7 @@ export default function AtomicItemImage({
       src={
         path == 'short'
           ? `/products/${productId}.png`
-          : `./products/${productId}.png`
+          : `/products/${productId}.png`
       }
       alt='productId'
       id='nike-product'
