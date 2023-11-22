@@ -1,10 +1,9 @@
 import { AtomicSubtitle, AtomicTitle, SvgStar } from '@/components';
 import './ItemInfo.scss';
 import { IProduct } from '@/lib/types';
-import Image from 'next/image';
 
 type IProps = {
-  product: IProduct;
+  product?: IProduct | null;
 };
 
 /**
@@ -46,12 +45,8 @@ export default function ItemInfo({ product }: IProps) {
           </div>
         </div>
 
-        <Image src='../item-nike-logo.jpg' alt='item-nike-logo' />
+        <img src='/item-nike-logo.jpg' alt='item-nike-logo' />
       </div>
     </div>
   );
 }
-
-ItemInfo.defaultProps = {
-  product: [],
-};
