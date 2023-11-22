@@ -62,7 +62,7 @@ export default function Page({ params }: { params: { id: string } }) {
     else if (products) {
       router.push(`${products[0]?._id}`);
     }
-  }, [currentIndex, products]);
+  }, [currentIndex, products, router]);
 
   const goPrevPage = () => console.log('go prev');
   const addToCart = () => console.log('go add to Cart');
