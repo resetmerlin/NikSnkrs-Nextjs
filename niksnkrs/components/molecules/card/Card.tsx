@@ -6,6 +6,7 @@ import {
   AtomicSubtitle,
   SvgStar,
 } from '@/components';
+import Link from 'next/link';
 
 type IProps = {
   product: IProduct;
@@ -19,20 +20,22 @@ type IProps = {
  */
 export default function Card({ product }: IProps) {
   return (
-    <AtomicCard>
-      <AtomicItemImage path='short' size='m' productId={product?._id} />
-      <div className='card__content'>
-        <AtomicSubtitle size='m'>{product?.name}</AtomicSubtitle>
+    <Link href={`/product/${product._id}`}>
+      <AtomicCard>
+        <AtomicItemImage path='short' size='m' productId={product?._id} />
+        <div className='card__content'>
+          <AtomicSubtitle size='m'>{product?.name}</AtomicSubtitle>
 
-        <div className='card__stars'>
-          <SvgStar color='black' />
-          <SvgStar color='black' />
-          <SvgStar color='black' />
-          <SvgStar color='black' />
-          <SvgStar color='black' />
+          <div className='card__stars'>
+            <SvgStar color='black' />
+            <SvgStar color='black' />
+            <SvgStar color='black' />
+            <SvgStar color='black' />
+            <SvgStar color='black' />
+          </div>
+          <AtomicSubtitle size='m'>$ {product?.price}</AtomicSubtitle>
         </div>
-        <AtomicSubtitle size='m'>$ {product?.price}</AtomicSubtitle>
-      </div>
-    </AtomicCard>
+      </AtomicCard>
+    </Link>
   );
 }
