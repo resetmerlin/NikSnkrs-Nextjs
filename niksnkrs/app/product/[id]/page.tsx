@@ -1,5 +1,6 @@
 'use client';
 
+import { productAdded, selectProducts } from '@/app/store/features';
 import {
   AtomicItemImage,
   ChildTemplate,
@@ -7,6 +8,7 @@ import {
   ItemInfoEvents,
   ItemNav,
   ParentTemplate,
+  SkeletonItemInfoEvents,
 } from '@/components';
 import { getProducts } from '@/lib/actions/products.actions';
 import { IProduct, IProducts } from '@/lib/types';
@@ -18,24 +20,32 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 export type ItemColRef = HTMLAnchorElement;
 
 export default function Page({ params }: { params: { id: string } }) {
   const productId = params.id;
-  const [products, setProducts] = useState<IProducts | null>(null);
   const columnRef = useRef<ItemColRef | null>(null);
   const router = useRouter();
+  const dispatch = useDispatch();
+  const selectedProducts = useSelector(selectProducts);
+  const products = selectedProducts[0];
 
   useEffect(() => {
-    if (!products) {
+    let ignore = false;
+    if (products.length == 0) {
       const handleProducts = async () => {
-        setProducts(await getProducts());
+        const data = await getProducts();
+        if (!ignore) dispatch(productAdded(data));
       };
 
       handleProducts();
+      return () => {
+        ignore = true;
+      };
     }
-  }, [params, setProducts, products]);
+  }, [dispatch, products]);
 
   const logOutHandler = () => console.log('u clicked');
   const userInfo = null;
@@ -71,11 +81,15 @@ export default function Page({ params }: { params: { id: string } }) {
     <HeaderLayout logOut={logOutHandler} userInfo={userInfo}>
       <ParentTemplate size='full'>
         <ChildTemplate position='left' size='full'>
-          <ItemInfoEvents
-            product={product}
-            goPrevPage={goPrevPage}
-            addToCart={addToCart}
-          />
+          {!products ? (
+            <SkeletonItemInfoEvents />
+          ) : (
+            <ItemInfoEvents
+              product={product}
+              goPrevPage={goPrevPage}
+              addToCart={addToCart}
+            />
+          )}
         </ChildTemplate>
         <ChildTemplate position='centerRight' size='full'>
           {/* <Object model={id?.id} /> */}
