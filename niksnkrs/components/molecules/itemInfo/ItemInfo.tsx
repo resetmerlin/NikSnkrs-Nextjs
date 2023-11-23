@@ -1,6 +1,7 @@
 import { AtomicSubtitle, AtomicTitle, SvgStar } from '@/components';
 import './ItemInfo.scss';
 import { IProduct } from '@/lib/types';
+import Image from 'next/image';
 
 type IProps = {
   product?: IProduct | null;
@@ -45,7 +46,12 @@ export default function ItemInfo({ product }: IProps) {
           </div>
         </div>
 
-        <img src='/item-nike-logo.jpg' alt='item-nike-logo' />
+        <Image
+          src='/item-nike-logo.jpg'
+          alt='item-nike-logo'
+          width={192}
+          height={212}
+        />
       </div>
     </div>
   );
