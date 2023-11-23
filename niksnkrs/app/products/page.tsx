@@ -1,3 +1,5 @@
+'use client';
+
 import {
   AtomicTitle,
   ChildTemplate,
@@ -6,12 +8,32 @@ import {
   ParentTemplate,
 } from '@/components';
 import { getProducts } from '@/lib/actions/products.actions';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { productAdded, selectProducts } from '../store/features';
 
-async function Page() {
+export default function Page() {
   const isLoading = null;
   const userInfo = null;
-  const products = await getProducts();
+
+  const dispatch = useDispatch();
+  const selectedProducts = useSelector(selectProducts);
+  const products = selectedProducts[0];
+
+  useEffect(() => {
+    let ignore = false;
+    if (!products || products.length == 0) {
+      const handleProducts = async () => {
+        const data = await getProducts();
+        if (!ignore) dispatch(productAdded(data));
+      };
+
+      handleProducts();
+      return () => {
+        ignore = true;
+      };
+    }
+  }, [dispatch, products]);
 
   const logOutHandler = () => console.log('touched');
 
@@ -28,5 +50,3 @@ async function Page() {
     </HeaderLayout>
   );
 }
-
-export default Page;
