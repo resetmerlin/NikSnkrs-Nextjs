@@ -4,3 +4,5 @@ export * from './intro';
 export * from './itemLists';
 export * from './itemNav';
 export * from './itemInfoEvents';
+export * from './background';
+export * from './userForm';
