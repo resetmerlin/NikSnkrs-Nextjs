@@ -34,7 +34,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     let ignore = false;
-    if (products.length == 0) {
+    if (!products || products.length == 0) {
       const handleProducts = async () => {
         const data = await getProducts();
         if (!ignore) dispatch(productAdded(data));
@@ -74,7 +74,35 @@ export default function Page({ params }: { params: { id: string } }) {
     }
   }, [currentIndex, products, router]);
 
-  const goPrevPage = () => console.log('go prev');
+  const [isObserving, setIsObserving] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && columnRef.current) {
+        setIsObserving(entry.isIntersecting);
+      }
+    });
+    if (columnRef.current) {
+      observer.observe(columnRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [goNextProductPage, isObserving]);
+
+  /** Follow the observed column */
+  useEffect(() => {
+    if (isObserving && columnRef.current) {
+      columnRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'start',
+      });
+    }
+  }, [goNextProductPage, isObserving]);
+
+  const goPrevPage = () => {
+    router.back();
+  };
   const addToCart = () => console.log('go add to Cart');
 
   return (
