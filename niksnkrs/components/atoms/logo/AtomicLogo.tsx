@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 /* eslint-disable react/jsx-props-no-spreading */
 import { TNormalElementProps } from '../../../lib/types';
 import './AtomicLogo.scss';
@@ -20,9 +21,11 @@ export default function AtomicLogo({
   ...props
 }: IProps) {
   return (
-    <img
+    <Image
       {...props}
-      src={'./nike-logo-black.png'}
+      width={112}
+      height={112}
+      src={'/nike-logo-black.png'}
       alt='nike-logo-black'
       id='nike-logo'
       onError={(e) => {
@@ -33,7 +36,3 @@ export default function AtomicLogo({
     />
   );
 }
-
-AtomicLogo.defaultProps = {
-  size: 'm',
-};
