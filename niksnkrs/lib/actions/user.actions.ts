@@ -24,7 +24,8 @@ const authenticationUser = async (req: { email: string; password: string }) => {
       };
     } else throw new Error('Invalid email of password');
   } catch (error) {
-    console.error('Invalid email of password');
+    console.error('Invalid email of password', error);
+    throw error;
   }
 };
 // @desc Register a new user
