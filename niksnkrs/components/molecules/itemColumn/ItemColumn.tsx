@@ -6,6 +6,7 @@ import './ItemColumn.scss';
 import { forwardRef } from 'react';
 import Link from 'next/link';
 import { ItemColRef } from '@/app/product/[id]/page';
+import Image from 'next/image';
 
 type IProps = {
   productId?: string;
@@ -28,7 +29,12 @@ export default forwardRef<ItemColRef, IProps>(function ItemColumn(
         size='xs'
         className={productId == product?._id ? `box-border` : ''}
       >
-        <img src={`/products/${product?._id}.png`} alt='card-jordan' />
+        <Image
+          width={140}
+          height={91}
+          src={`/products/${product?._id}.png`}
+          alt='card-jordan'
+        />
       </AtomicItem>
     </Link>
   );
