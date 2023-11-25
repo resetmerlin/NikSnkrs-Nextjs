@@ -11,11 +11,17 @@ import {
 } from '@/lib/types';
 import { orderAdded } from '../order';
 import { userInfoAdded } from '../user';
+import { HYDRATE } from 'next-redux-wrapper';
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: '/api',
   }),
+  extractRehydrationInfo(action, { reducerPath }) {
+    if (action.type === HYDRATE) {
+      return action.payload[reducerPath];
+    }
+  },
 
   endpoints: (build) => ({
     getProducts: build.query<IProducts, void>({
