@@ -94,7 +94,7 @@ export default function Page({ params }: { params: { id: string } }) {
     if (isObserving && columnRef.current) {
       columnRef.current.scrollIntoView({
         behavior: 'smooth',
-        block: 'center',
+        block: 'end',
         inline: 'start',
       });
     }
