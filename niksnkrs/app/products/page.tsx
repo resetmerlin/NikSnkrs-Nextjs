@@ -8,11 +8,12 @@ import {
   ParentTemplate,
 } from '@/components';
 import React from 'react';
-import { useGetProductsQuery } from '../store/features';
+import { selectUser, useGetProductsQuery } from '../store/features';
+import { useAppSelector } from '../hooks/hooks';
+import { IUser } from '@/lib/types';
 
 export default function Page() {
-  const userInfo = null;
-
+  const userInfo: IUser = useAppSelector(selectUser);
   const { data: products, isLoading } = useGetProductsQuery();
 
   const logOutHandler = () => console.log('touched');
