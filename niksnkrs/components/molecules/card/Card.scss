@@ -32,4 +32,37 @@
     transform: rotate(0.9turn) translateX(-10rem) translateY(-7rem);
     position: absolute;
   }
+  .skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+    border: none !important;
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-color: hsl(200, 20%, 80%);
+    }
+    100% {
+      background-color: hsl(200, 20%, 95%);
+    }
+  }
+
+  .skeleton-text-big {
+    width: 70%;
+    height: 2.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+  }
+  .skeleton-text-small {
+    width: 40%;
+    height: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+  }
+  .skeleton-text__body {
+    width: 75%;
+  }
+
+  .skeleton-footer {
+    width: 30%;
+  }
 }
