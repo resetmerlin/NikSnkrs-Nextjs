@@ -7,16 +7,20 @@ import {
   ItemLists,
   ParentTemplate,
 } from '@/components';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { selectUser, useGetProductsQuery } from '../store/features';
-import { useAppSelector } from '../hooks/hooks';
+import { logOut, useAppSelector } from '../hooks/hooks';
 import { IUser } from '@/lib/types';
+import { useDispatch } from 'react-redux';
 
 export default function Page() {
+  const dispatch = useDispatch();
   const userInfo: IUser = useAppSelector(selectUser);
   const { data: products, isLoading } = useGetProductsQuery();
 
-  const logOutHandler = () => console.log('touched');
+  const logOutHandler = useCallback(() => {
+    logOut(dispatch);
+  }, [dispatch]);
 
   return (
     <HeaderLayout userInfo={userInfo} logOut={logOutHandler}>
