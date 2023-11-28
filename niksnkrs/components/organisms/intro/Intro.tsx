@@ -4,7 +4,7 @@ import {
   IntroCenter,
   IntroLeft,
   IntroRight,
-} from '../../molecules/intro';
+} from '@/components/molecules/intro';
 
 /**
  * Responsible for making intro organisms
@@ -14,7 +14,7 @@ import {
  */
 export default function Intro() {
   return (
-    <div className="intro">
+    <div className='intro'>
       <IntroLeft />
       <IntroCenter />
       <IntroBackground />
