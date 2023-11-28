@@ -1,4 +1,6 @@
-import { getProducts } from '@/lib/actions/products.actions';
+'use client';
+
+import { useCallback } from 'react';
 import {
   CardLists,
   CardListsSkeleton,
@@ -7,13 +9,18 @@ import {
   Intro,
   ParentTemplate,
 } from '../components';
+import { logOut, useAppDispatch, useAppSelector } from './hooks/hooks';
+import { selectUser, useGetProductsQuery } from './store/features';
 
-async function Home() {
-  const isLoading = null;
-  const userInfo = null;
-  const products = await getProducts();
+export default function Page() {
+  const dispatch = useAppDispatch();
+  const userInfo = useAppSelector(selectUser);
+  const { data: products, isLoading } = useGetProductsQuery();
 
-  const logOutHandler = () => console.log('touched');
+  const logOutHandler = useCallback(() => {
+    logOut(dispatch);
+  }, [dispatch]);
+
   const threeProducts = products && [...products]?.slice(0, 3);
 
   return (
@@ -33,5 +40,3 @@ async function Home() {
     </HeaderLayout>
   );
 }
-
-export default Home;
