@@ -1,5 +1,6 @@
 import { AtomicSubtitle, AtomicTitle } from '@/components';
 import './IntroLeft.scss';
+import { goldmand } from '@/app/font';
 
 /**
  * Responsible for rendering a intro left
@@ -9,7 +10,7 @@ import './IntroLeft.scss';
  */
 export default function IntroLeft() {
   return (
-    <div className='intro-left'>
+    <div className={`intro-left ${goldmand.className}`}>
       <AtomicTitle size='m' strength='600'>
         JUST
       </AtomicTitle>
