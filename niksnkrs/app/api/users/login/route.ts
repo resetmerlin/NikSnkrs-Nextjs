@@ -3,7 +3,10 @@ import { connectDatabase } from '@/lib/mongoose';
 import { createToken } from '@/lib/tokens';
 import { NextRequest, NextResponse } from 'next/server';
 
-export const POST = async (req: { email: string; password: string }, res) => {
+export const POST = async (
+  req: { email: string; password: string },
+  res: NextResponse
+) => {
   try {
     connectDatabase();
 
