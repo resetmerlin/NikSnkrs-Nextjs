@@ -1,34 +1,16 @@
-import User from '@/lib/models/userModel';
-import { connectDatabase } from '@/lib/mongoose';
-import { createToken } from '@/lib/tokens';
-import { NextRequest, NextResponse } from 'next/server';
+import { authenticationUser } from '@/lib/actions/user.actions';
+import { NextResponse } from 'next/server';
 
-export const POST = async (
-  req: { email: string; password: string },
-  res: NextResponse
-) => {
+export const POST = async (req: Request, res: NextResponse) => {
   try {
-    connectDatabase();
+    if (req.method == 'POST') {
+      const auth = await authenticationUser(req.body);
 
-    const { email, password } = req;
-
-    const user = await User.findOne({ email });
-
-    if (user && (await user.matchPassword(password))) {
-      return NextResponse.json({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        isAdmin: user.isAdmin,
-        token: createToken(user._id),
-      });
+      return NextResponse.json(auth);
     } else {
-      throw new Error('Invalid email of password');
+      throw new Error('Invalid request method');
     }
-  } catch (error) {
-    return NextResponse.json(
-      { message: 'Invalid email or password' },
-      { status: 400 }
-    );
+  } catch (err) {
+    return NextResponse.json({ message: `${err}` }, { status: 500 });
   }
 };

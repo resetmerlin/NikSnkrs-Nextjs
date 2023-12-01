@@ -4,19 +4,30 @@ import { createToken } from '@/lib/tokens';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const POST = async (
-  req: { name: string; email: string; password: string },
+  req: {
+    body: { name: string; email: string; password: string };
+  },
   res
 ) => {
+  await connectDatabase();
+
+  const { name, email, password } = req.body;
   try {
-    connectDatabase();
-
-    const { name, email, password } = req;
-
     const userExists = await User.findOne({ email });
 
     if (userExists) {
-      res.status(405).json({ message: 'User already exists' });
-      throw new Error('User already exists');
+      return NextResponse.json(
+        { message: 'User already exists' },
+        { status: 401 }
+      );
+    }
+
+    // Validation
+    if (!name || !email || !password) {
+      return NextResponse.json(
+        { message: 'Name, email, and password are required' },
+        { status: 400 }
+      );
     }
 
     const user = await User.create({
@@ -27,7 +38,7 @@ export const POST = async (
     });
 
     if (user) {
-      NextResponse.json({
+      return NextResponse.json({
         _id: user._id,
         name: user.name,
         email: user.email,
@@ -35,10 +46,13 @@ export const POST = async (
         token: createToken(user._id),
       });
     } else {
-      NextResponse.json({ message: 'Invalid user data' }, { status: 400 });
-      throw new Error('Invalid user data');
+      return NextResponse.json(
+        { message: 'Invalid user data' },
+        { status: 400 }
+      );
     }
   } catch (error) {
-    return NextResponse.json({ message: `${error}` }, { status: 400 });
+    console.error(error); // Log the error for debugging
+    return NextResponse.json({ message: `${error}` }, { status: 500 });
   }
 };
