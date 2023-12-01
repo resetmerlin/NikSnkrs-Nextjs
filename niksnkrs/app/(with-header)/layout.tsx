@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Goldman, Oswald } from 'next/font/google';
 import './globals.css';
-import Providers from './store/provider';
-import { oswald } from './font';
+import Providers from '../store/provider';
+import { oswald } from '../font';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
