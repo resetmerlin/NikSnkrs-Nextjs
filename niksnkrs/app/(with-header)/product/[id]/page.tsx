@@ -106,32 +106,30 @@ export default function Page({ params }: { params: { id: string } }) {
   const addToCart = () => console.log('go add to Cart');
 
   return (
-    <HeaderLayout logOut={logOutHandler} userInfo={userInfo}>
-      <ParentTemplate size='full'>
-        <ChildTemplate position='left' size='full'>
-          {!products ? (
-            <SkeletonItemInfoEvents />
-          ) : (
-            <ItemInfoEvents
-              product={product}
-              goPrevPage={goPrevPage}
-              addToCart={addToCart}
-            />
-          )}
-        </ChildTemplate>
-        <ChildTemplate position='centerRight' size='full'>
-          {/* <Object model={id?.id} /> */}
-          <AtomicItemImage path='long' size='xl' productId={productId} />
-        </ChildTemplate>
-        <ChildTemplate position='right' size='full'>
-          <ItemNav
-            products={products}
-            productId={productId}
-            goNextProductPage={goNextProductPage}
-            ref={columnRef}
+    <ParentTemplate size='full'>
+      <ChildTemplate position='left' size='full'>
+        {!products ? (
+          <SkeletonItemInfoEvents />
+        ) : (
+          <ItemInfoEvents
+            product={product}
+            goPrevPage={goPrevPage}
+            addToCart={addToCart}
           />
-        </ChildTemplate>
-      </ParentTemplate>
-    </HeaderLayout>
+        )}
+      </ChildTemplate>
+      <ChildTemplate position='centerRight' size='full'>
+        {/* <Object model={id?.id} /> */}
+        <AtomicItemImage path='long' size='xl' productId={productId} />
+      </ChildTemplate>
+      <ChildTemplate position='right' size='full'>
+        <ItemNav
+          products={products}
+          productId={productId}
+          goNextProductPage={goNextProductPage}
+          ref={columnRef}
+        />
+      </ChildTemplate>
+    </ParentTemplate>
   );
 }

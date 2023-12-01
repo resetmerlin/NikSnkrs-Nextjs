@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { Goldman, Oswald } from 'next/font/google';
-import './globals.css';
 import Providers from '../store/provider';
 import { oswald } from '../font';
+import { HeaderLayout } from '@/components';
+import '../globals.css';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={oswald.className}>
-        <Providers>{children}</Providers>
+        <HeaderLayout>
+          <Providers>{children}</Providers>
+        </HeaderLayout>
       </body>
     </html>
   );
