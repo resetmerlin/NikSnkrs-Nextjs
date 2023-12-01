@@ -20,23 +20,21 @@ export default function Page() {
     useLoginPage();
 
   return (
-    <Layout>
-      <ParentTemplate size='full'>
-        <ChildTemplate size='full' position='leftRight'>
-          <Background />
-        </ChildTemplate>
-        <ChildTemplate size='full' position='right'>
-          <UserForm>
-            <LoginForm
-              loginError={loginError}
-              inputErrors={inputErrors}
-              handleSubmit={handleSubmit}
-              loginSubmit={loginSubmit}
-              register={register}
-            />
-          </UserForm>
-        </ChildTemplate>
-      </ParentTemplate>
-    </Layout>
+    <ParentTemplate size='full'>
+      <ChildTemplate size='full' position='leftRight'>
+        <Background />
+      </ChildTemplate>
+      <ChildTemplate size='full' position='right'>
+        <UserForm>
+          <LoginForm
+            loginError={loginError}
+            inputErrors={inputErrors}
+            handleSubmit={handleSubmit}
+            loginSubmit={loginSubmit}
+            register={register}
+          />
+        </UserForm>
+      </ChildTemplate>
+    </ParentTemplate>
   );
 }
