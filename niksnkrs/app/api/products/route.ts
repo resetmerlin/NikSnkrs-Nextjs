@@ -15,6 +15,6 @@ export const GET = async (req: NextRequest) => {
       throw new Error('Invalid request method');
     }
   } catch (err) {
-    return NextResponse.json({ message: err });
+    return NextResponse.json({ message: `${err}` });
   }
 };
