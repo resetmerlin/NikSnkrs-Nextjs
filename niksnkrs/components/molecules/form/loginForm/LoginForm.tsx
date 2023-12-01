@@ -12,7 +12,7 @@ import './LoginForm.scss';
 import { UseFormReturn } from 'react-hook-form';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { SerializedError } from '@reduxjs/toolkit';
-import { LoginData } from '@/app/login/page';
+import { LoginData } from '@/app/(without-header)/login/page';
 import Link from 'next/link';
 
 type IProps = {

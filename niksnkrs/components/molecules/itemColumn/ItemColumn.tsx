@@ -5,7 +5,7 @@ import { AtomicItem } from '../../atoms';
 import './ItemColumn.scss';
 import { forwardRef } from 'react';
 import Link from 'next/link';
-import { ItemColRef } from '@/app/product/[id]/page';
+import { ItemColRef } from '@/app/(with-header)/product/[id]/page';
 import Image from 'next/image';
 
 type IProps = {

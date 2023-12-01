@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { SubmitHandler, UseFormReturn, useForm } from 'react-hook-form';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { SerializedError } from '@reduxjs/toolkit';
-import { useUserAuthorizedMutation } from '../store/features';
+import { useUserAuthorizedMutation } from '../../store/features';
 import { IUser } from '@/lib/types';
 import { useRouter } from 'next/navigation';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
@@ -38,6 +38,7 @@ export const useRegisterPage = (): [
       email: data.userEmail,
       password: data.userPassword,
     };
+
     userAuthorize(user);
   };
 

@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import './ItemNav.scss';
 import { IProduct, IProducts } from '@/lib/types';
 import { DownButton, ItemColumn } from '@/components';
-import { ItemColRef } from '@/app/product/[id]/page';
+import { ItemColRef } from '@/app/(with-header)/product/[id]/page';
 
 type IProps = {
   goNextProductPage: () => void;
