@@ -8,9 +8,9 @@ import {
   HeaderLayout,
   Intro,
   ParentTemplate,
-} from '../components';
-import { logOut, useAppDispatch, useAppSelector } from './hooks/hooks';
-import { selectUser, useGetProductsQuery } from './store/features';
+} from '../../components';
+import { logOut, useAppDispatch, useAppSelector } from '../hooks/hooks';
+import { selectUser, useGetProductsQuery } from '../store/features';
 
 export default function Page() {
   const dispatch = useAppDispatch();
