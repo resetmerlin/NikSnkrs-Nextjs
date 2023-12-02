@@ -17,9 +17,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={oswald.className}>
-        <HeaderLayout>
-          <Providers>{children}</Providers>
-        </HeaderLayout>
+        <Providers>
+          <HeaderLayout>{children}</HeaderLayout>
+        </Providers>
       </body>
     </html>
   );
