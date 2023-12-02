@@ -1,4 +1,3 @@
-import { authenticationUser } from '@/lib/actions/user.actions';
 import User from '@/lib/models/userModel';
 import { connectDatabase } from '@/lib/mongoose';
 import { createToken } from '@/lib/tokens';
