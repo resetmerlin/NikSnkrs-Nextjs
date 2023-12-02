@@ -1,4 +1,10 @@
-import { useAppDispatch, useAppSelector } from '@/app/hooks/hooks';
+'use client';
+
+import {
+  useAppDispatch,
+  useAppSelector,
+  useGoToLogin,
+} from '@/app/hooks/hooks';
 import {
   addressAdded,
   selectAddress,
@@ -12,6 +18,7 @@ import {
   UserAddress,
   UserInfo,
 } from '@/components';
+
 import { registerSchema } from '@/lib/schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
@@ -34,6 +41,8 @@ export default function Page() {
   const addressInfo = useAppSelector(selectAddress);
 
   const router = useRouter();
+
+  useGoToLogin(userInfo, router);
 
   // Change profile via api
   const [userChange, { error: profileError, data: profileSuccess }] =
