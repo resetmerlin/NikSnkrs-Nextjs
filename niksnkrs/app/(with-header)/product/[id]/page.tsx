@@ -47,9 +47,6 @@ export default function Page({ params }: { params: { id: string } }) {
     }
   }, [dispatch, products]);
 
-  const logOutHandler = () => console.log('u clicked');
-  const userInfo = null;
-
   const product = useMemo(() => {
     return (
       products &&
@@ -103,8 +100,20 @@ export default function Page({ params }: { params: { id: string } }) {
   const goPrevPage = () => {
     router.back();
   };
-  const addToCart = () => console.log('go add to Cart');
+  /** go cart page with quantity */
+  const addToCart = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const qty = e.currentTarget?.productSelect.value;
 
+      if (product?.countInStock === 0) {
+        alert('Out of Stock');
+      } else {
+        router.push(`/cart/${product?._id}?qty=${qty}`);
+      }
+    },
+    [router, product]
+  );
   return (
     <ParentTemplate size='full'>
       <ChildTemplate position='left' size='full'>
