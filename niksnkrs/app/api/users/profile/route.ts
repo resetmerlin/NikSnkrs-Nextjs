@@ -39,14 +39,15 @@ export const GET = async (req: Request, res: NextResponse) => {
   }
 };
 
-export const POST = async (req: Request, res: NextResponse) => {
+export const PUT = async (req: Request, res: NextResponse) => {
   try {
-    if (req.method !== 'POST') throw new Error('Invalid request method');
+    if (req.method !== 'PUT') throw new Error('Invalid request method');
 
     connectDatabase();
 
-    const authorization = req.headers.get('authorization');
     const body = await req.json();
+
+    const authorization = req.headers.get('authorization');
 
     const token = authorization?.split(' ')[1];
     if (!token) {
