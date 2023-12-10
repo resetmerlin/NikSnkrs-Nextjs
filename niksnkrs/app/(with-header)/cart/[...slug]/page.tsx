@@ -21,7 +21,7 @@ import { IAddress, ICart, ICarts, IUser } from '@/lib/types';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect, useMemo } from 'react';
 
-export default function Page() {
+export default function CartSlugPage() {
   const dispatch = useAppDispatch();
 
   const router = useRouter();
@@ -35,7 +35,7 @@ export default function Page() {
   const address: IAddress = useAppSelector(selectAddress);
 
   const { slug } = useParams();
-  const id = slug[0];
+  const id = slug && slug[0];
 
   /** fetch chosen product */
   const [addToCart] = useAddToCartMutation();
