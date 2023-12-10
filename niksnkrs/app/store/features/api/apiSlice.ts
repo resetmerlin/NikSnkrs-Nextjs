@@ -28,10 +28,10 @@ export const api = createApi({
       query: () => '/products',
     }),
     getProduct: build.query<IProductId, void>({
-      query: (id) => `/products/${id}`,
+      query: (id) => `products/id/?id=${id}`,
     }),
     addToCart: build.mutation<IProduct, { id: string; qty: number }>({
-      query: ({ id }) => `/products/${id}`,
+      query: ({ id }) => `products/id/?id=${id}`,
       async onQueryStarted({ id, qty }, api) {
         if (qty && id) {
           const { dispatch, queryFulfilled } = api;
