@@ -26,10 +26,10 @@ export default function AtomicItemImage({
   return (
     <Image
       width={
-        size === 'xl' ? 960 : size === 'l' ? 368 : size === 'm' ? 176 : 176
+        size === 'xl' ? 960 : size === 'l' ? 368 : size === 'm' ? 176 : 123.2
       }
       height={
-        size === 'xl' ? 960 : size === 'l' ? 320 : size === 'm' ? 176 : 176
+        size === 'xl' ? 960 : size === 'l' ? 320 : size === 'm' ? 176 : 123.2
       }
       {...props}
       src={
