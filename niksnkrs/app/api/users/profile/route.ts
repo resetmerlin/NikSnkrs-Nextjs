@@ -45,7 +45,7 @@ export const PUT = async (req: Request, res: NextResponse) => {
 
     connectDatabase();
 
-    const body = await req.json();
+    const bodyUser = await req.json();
 
     const authorization = req.headers.get('authorization');
 
@@ -62,20 +62,20 @@ export const PUT = async (req: Request, res: NextResponse) => {
     const user = await User.findById(decoded.id).select('-password');
 
     if (user) {
-      user.name = body.user.name || user.name;
-      user.email = body.user.email || user.email;
-      if (body.user.password) {
-        user.password = body.user.password;
+      user.name = bodyUser.name || user.name;
+      user.email = bodyUser.email || user.email;
+      if (bodyUser.password) {
+        user.password = bodyUser.password;
       }
 
       const updatedClient = await user.save();
-      return {
+      return NextResponse.json({
         _id: updatedClient._id,
         name: updatedClient.name,
         email: updatedClient.email,
         isAdmin: updatedClient.isAdmin,
         token: createToken(updatedClient._id),
-      };
+      });
     } else {
       return NextResponse.json({ message: 'User not found' }, { status: 400 });
     }
