@@ -1,0 +1,28 @@
+.orderInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100rem;
+  height: 100%;
+  flex-direction: column;
+  &__row {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    .title {
+      border-bottom: 1px solid black;
+      margin-bottom: 1rem;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      height: 5rem;
+
+      span:nth-child(1) {
+        margin-right: 10rem;
+      }
+    }
+  }
+}
