@@ -9,3 +9,4 @@ export * from './userForm';
 export * from './userInfo';
 export * from './userAddress';
 export * from './cart';
+export * from './orderInfo';
