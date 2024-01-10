@@ -4,14 +4,13 @@ import { productAdded, selectProducts } from '@/app/store/features';
 import {
   AtomicItemImage,
   ChildTemplate,
-  HeaderLayout,
   ItemInfoEvents,
   ItemNav,
   ParentTemplate,
   SkeletonItemInfoEvents,
 } from '@/components';
 import { getProducts } from '@/lib/actions/products.actions';
-import { IProduct, IProducts } from '@/lib/types';
+import { IProduct } from '@/lib/types';
 import { useRouter } from 'next/navigation';
 import React, {
   useCallback,
@@ -115,8 +114,8 @@ export default function Page({ params }: { params: { id: string } }) {
     [router, product]
   );
   return (
-    <ParentTemplate size='full'>
-      <ChildTemplate position='left' size='full'>
+    <ParentTemplate size="full">
+      <ChildTemplate position="left" size="full">
         {!products ? (
           <SkeletonItemInfoEvents />
         ) : (
@@ -127,11 +126,11 @@ export default function Page({ params }: { params: { id: string } }) {
           />
         )}
       </ChildTemplate>
-      <ChildTemplate position='centerRight' size='full'>
+      <ChildTemplate position="centerRight" size="full">
         {/* <Object model={id?.id} /> */}
-        <AtomicItemImage path='long' size='xl' productId={productId} />
+        <AtomicItemImage path="long" size="xl" productId={productId} />
       </ChildTemplate>
-      <ChildTemplate position='right' size='full'>
+      <ChildTemplate position="right" size="full">
         <ItemNav
           products={products}
           productId={productId}
