@@ -26,6 +26,7 @@ To install the project and its dependencies, follow these steps:
 - Moreover I target first and migrated. Example: Home page first vs Product page first
 
 ___
+[Screencast from 2024년 01월 10일 15시 16분 18초.webm](https://github.com/resetmerlin/NikSnkrs-Nextjs/assets/108568153/228b6e77-dfd5-4ecb-beb1-6f14a0590c64)
 
 ### Views
 #### Home Page
