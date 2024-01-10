@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
 import {
   AtomicTitle,
   ChildTemplate,
   ItemLists,
   ParentTemplate,
-} from "@/components";
-import { useProductsPage } from "./page.hook";
+} from '@/components';
+import { useGetProductsQuery } from '@/app/store/features';
 
 export default function Page() {
-  const [products, isLoading] = useProductsPage();
+  const { data: products, isLoading } = useGetProductsQuery();
 
   return (
     <ParentTemplate size="s">
