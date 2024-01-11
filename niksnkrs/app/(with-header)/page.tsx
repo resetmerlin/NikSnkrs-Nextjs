@@ -1,5 +1,4 @@
-'use client';
-
+import { getProducts } from '@/lib/actions/products.actions';
 import {
   CardLists,
   CardListsSkeleton,
@@ -7,10 +6,9 @@ import {
   Intro,
   ParentTemplate,
 } from '../../components';
-import { useGetProductsQuery } from '../store/features';
 
-export default function Page() {
-  const { data: products, isLoading } = useGetProductsQuery();
+export default async function Page() {
+  const products = await getProducts();
 
   const threeProducts = products && [...products]?.slice(0, 3);
 
@@ -20,7 +18,7 @@ export default function Page() {
         <Intro />
       </ChildTemplate>
       <ChildTemplate position="bottomRight" size="s">
-        {isLoading ? (
+        {!threeProducts ? (
           <CardListsSkeleton />
         ) : (
           <CardLists products={threeProducts} />
