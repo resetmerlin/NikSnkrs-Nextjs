@@ -1,12 +1,12 @@
 'use client';
 
-import { logOut, useAppDispatch, useAppSelector } from '@/app/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@/app/hooks/hooks';
 import {
+  cartAdded,
   cartDeleted,
   selectAddress,
   selectCart,
   selectUser,
-  useAddToCartMutation,
   useAddToOrderMutation,
 } from '@/app/store/features';
 import {
@@ -17,8 +17,9 @@ import {
   ChildTemplate,
   ParentTemplate,
 } from '@/components';
+import { getProductById } from '@/lib/actions/products.actions';
 import { IAddress, ICart, ICarts, IUser } from '@/lib/types';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import React, { useCallback, useEffect, useMemo } from 'react';
 
 export default function CartSlugPage({
@@ -40,8 +41,6 @@ export default function CartSlugPage({
   const { slug } = useParams();
   const id = slug && slug[0];
 
-  /** fetch chosen product */
-  const [addToCart] = useAddToCartMutation();
   /** Delete product on cart */
   const deletOnCart = useCallback(
     (product: ICart['product']) => dispatch(cartDeleted(product)),
@@ -107,10 +106,28 @@ export default function CartSlugPage({
   }, [orderData, router]);
 
   useEffect(() => {
+    let ignore = false;
     if (id && qty) {
-      addToCart({ id, qty });
+      const handleProducts = async () => {
+        const data = await getProductById(id);
+
+        const cartData = {
+          product: data._id,
+          name: data.name,
+          price: data.price,
+          countInStock: data.countInStock,
+          qty,
+        };
+        if (!ignore) dispatch(cartAdded(cartData));
+      };
+
+      handleProducts();
+
+      return () => {
+        ignore = true;
+      };
     }
-  }, [addToCart, id, qty]);
+  }, [dispatch]);
 
   return (
     <ParentTemplate size="m">
