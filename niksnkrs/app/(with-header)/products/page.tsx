@@ -1,15 +1,13 @@
-'use client';
-
 import {
   AtomicTitle,
   ChildTemplate,
   ItemLists,
   ParentTemplate,
 } from '@/components';
-import { useGetProductsQuery } from '@/app/store/features';
+import { getProducts } from '@/lib/actions/products.actions';
 
-export default function Page() {
-  const { data: products, isLoading } = useGetProductsQuery();
+export default async function Page() {
+  const products = await getProducts();
 
   return (
     <ParentTemplate size="s">
@@ -17,7 +15,7 @@ export default function Page() {
         <AtomicTitle size="xs">Latest Products</AtomicTitle>
       </ChildTemplate>
       <ChildTemplate position="bottomCenter" size="s">
-        <ItemLists products={products} isLoading={isLoading} />
+        <ItemLists products={products} />
       </ChildTemplate>
     </ParentTemplate>
   );
