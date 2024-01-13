@@ -21,12 +21,15 @@ import { IAddress, ICart, ICarts, IUser } from '@/lib/types';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect, useMemo } from 'react';
 
-export default function CartSlugPage() {
+export default function CartSlugPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) {
   const dispatch = useAppDispatch();
 
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const qty = Number(searchParams.get('qty'));
+  const qty = Number(searchParams?.qty);
 
   const [addToOrder, { data: orderData }] = useAddToOrderMutation();
 
@@ -110,15 +113,15 @@ export default function CartSlugPage() {
   }, [addToCart, id, qty]);
 
   return (
-    <ParentTemplate size='m'>
-      <ChildTemplate position='topLeft' size='m'>
-        <AtomicTitle size='xs'>Cart</AtomicTitle>
+    <ParentTemplate size="m">
+      <ChildTemplate position="topLeft" size="m">
+        <AtomicTitle size="xs">Cart</AtomicTitle>
       </ChildTemplate>
-      <ChildTemplate position='centerLeft' size='m'>
+      <ChildTemplate position="centerLeft" size="m">
         <Cart cartProducts={carts} deletOnCart={deletOnCart} />
       </ChildTemplate>
 
-      <ChildTemplate position='right' size='m'>
+      <ChildTemplate position="right" size="m">
         <CartSummary
           taxPrice={taxPrice}
           shippingPrice={shippingPrice}
@@ -131,7 +134,7 @@ export default function CartSlugPage() {
         />
       </ChildTemplate>
 
-      <ChildTemplate position='bottomLeft' size='m'>
+      <ChildTemplate position="bottomLeft" size="m">
         <CartAddress address={address} />
       </ChildTemplate>
     </ParentTemplate>
